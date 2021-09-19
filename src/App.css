@@ -1,1 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Norican&family=Oleo+Script+Swash+Caps&display=swap");
+
+:root {
+    --color-primary: #af0808;
+    --color-complementary: #f7e85d;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    overflow: hidden;
+}
+
+button {
+    font-family: Merriweather, sans-serif;
+    font-size: 2.5rem;
+    border: 0;
+    border-radius: 10rem;
+    cursor: pointer;
+}
+
+span {
+    font-family: Merriweather, sans-serif;
+}

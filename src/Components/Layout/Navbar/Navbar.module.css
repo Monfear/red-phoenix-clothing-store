@@ -1,0 +1,82 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 0 7%;
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+}
+
+.navLink {
+    font-family: Norican, sans-serif;
+    font-size: 4rem;
+    color: #fff;
+    margin-right: 5rem;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}
+
+.activeNavLink {
+    color: var(--color-complementary);
+}
+
+.btnCart {
+    width: 200px;
+    height: 60px;
+    font-family: inherit;
+    font-size: 2.2rem;
+
+    transition: all 0.3s;
+}
+
+.btnCart:hover,
+.btnCart:active {
+    background-color: var(--color-complementary);
+}
+
+.accountContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+.accountContainer:hover {
+    border-bottom: 2px solid var(--color-complementary);
+}
+
+.accountIcon {
+    font-size: 4rem;
+    color: var(--color-primary);
+    margin-right: 0.5rem;
+}
+
+.accountText {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.btnLog {
+    width: 120px;
+    height: 40px;
+    font-size: 2rem;
+    color: #fff;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+
+    transition: all 0.3s;
+}
+
+.btnLog:hover,
+.btnLog:active {
+    background-color: transparent;
+}

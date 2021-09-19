@@ -1,0 +1,82 @@
+.header {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("./../../../img/background.jpg");
+    background-size: 100% 100%;
+    font-family: Oleo Script Swash Caps, sans-serif;
+    overflow: hidden;
+}
+
+.photoGirl {
+    width: 370px;
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+
+    animation: animationImg 1s ease-in-out;
+}
+
+@keyframes animationImg {
+    0% {
+        opacity: 0;
+        transform: translateX(200%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.heading {
+    font-size: 6rem;
+    color: #fff;
+    margin: 12% 0 0 7%;
+    margin-top: 12%;
+    width: 60rem;
+    animation: animationText 1s ease-in-out;
+}
+
+.caption {
+    font-size: 4rem;
+    color: #fff;
+    margin: 2rem 0 0 7%;
+    width: 60rem;
+    animation: animationText 1s ease-in-out;
+}
+
+@keyframes animationText {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.btnCreate {
+    width: 240px;
+    height: 80px;
+    background-color: var(--color-primary);
+    color: #fff;
+    margin: 5rem 0 0 7%;
+    border: 2px solid #af0808;
+
+    transition: all 0.3s;
+
+    animation: animateButton 0.5s ease-out;
+}
+
+.btnCreate:hover {
+    background-color: transparent;
+}
+
+@keyframes animateButton {
+    0% {
+        transform: translateY(200%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
