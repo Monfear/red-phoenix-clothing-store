@@ -12,18 +12,7 @@
 }
 
 html {
+    font-family: Merriweather, sans-serif;
     font-size: 62.5%;
     overflow: hidden;
-}
-
-button {
-    font-family: Merriweather, sans-serif;
-    font-size: 2.5rem;
-    border: 0;
-    border-radius: 10rem;
-    cursor: pointer;
-}
-
-span {
-    font-family: Merriweather, sans-serif;
 }

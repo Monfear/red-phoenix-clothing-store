@@ -1,0 +1,57 @@
+.register {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("./../../../img/background-register.jpg");
+    background-size: cover;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid var(--color-complementary);
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+label {
+    font-size: 3rem;
+    color: #fff;
+}
+
+input {
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem;
+    outline: 0;
+}
+
+input:focus {
+    background-color: var(--color-complementary);
+}
+
+small {
+    color: red;
+    font-size: 1.5rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+}
+
+.btn:hover {
+    background-color: var(--color-complementary);
+}
+
+.success {
+    color: rgb(74, 241, 74);
+}
+
+.error {
+    color: red;
+}
