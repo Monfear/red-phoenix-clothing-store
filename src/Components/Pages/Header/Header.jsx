@@ -4,7 +4,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import girl from "./../../../img/girl.png";
-import { Button } from "../../Interface/Button/Button";
 
 export const Header = () => {
     return (
@@ -15,7 +14,7 @@ export const Header = () => {
             <p className={styles.caption}>You can find here the best sort of clothes from the word’s primary companies</p>
 
             <Link to="/register">
-                <Button classList={styles.btnCreate}>Create account</Button>
+                <button className={styles.btnCreate}>Create account</button>
             </Link>
         </header>
     );

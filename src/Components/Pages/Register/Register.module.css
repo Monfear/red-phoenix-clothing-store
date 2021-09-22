@@ -39,12 +39,23 @@ small {
     font-size: 1.5rem;
 }
 
-.btn {
+.btnRegister {
+    width: 200px;
+    height: 60px;
+
+    font-size: 2.5rem;
+
     padding: 1rem 2rem;
     margin-top: 2rem;
+
+    border: 2px solid #af0808;
+    border-radius: 10rem;
+    cursor: pointer;
+
+    transition: all 0.3s;
 }
 
-.btn:hover {
+.btnRegister:hover {
     background-color: var(--color-complementary);
 }
 

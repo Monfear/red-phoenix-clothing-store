@@ -16,3 +16,7 @@ html {
     font-size: 62.5%;
     overflow: hidden;
 }
+
+button {
+    font-family: Merriweather, sans-serif;
+}

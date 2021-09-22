@@ -55,8 +55,25 @@
 }
 
 .btnCreate {
+    width: 220px;
+    height: 70px;
+    background-color: var(--color-primary);
+
+    font-size: 2.5rem;
+    color: #fff;
+
     margin: 5rem 0 0 7%;
+    border: 2px solid #af0808;
+    border-radius: 10rem;
+    cursor: pointer;
+
+    transition: all 0.3s;
     animation: showButton 0.5s ease-out;
+}
+
+.btnCreate:hover,
+.btnCreate:active {
+    background-color: transparent;
 }
 
 @keyframes showButton {
