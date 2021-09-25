@@ -1,4 +1,4 @@
-.register {
+.container {
     height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("./../../../img/background-register.jpg");
     background-size: cover;
@@ -18,24 +18,24 @@
     padding: 3rem;
 }
 
-label {
+.label {
     font-size: 3rem;
     color: #fff;
 }
 
-input {
+.input {
     font-size: 2rem;
     text-align: center;
     padding: 1rem;
+    margin-bottom: 1rem;
     outline: 0;
 }
 
-input:focus {
+.input:focus {
     background-color: var(--color-complementary);
 }
 
-small {
-    color: red;
+.message {
     font-size: 1.5rem;
 }
 
@@ -64,5 +64,5 @@ small {
 }
 
 .error {
-    color: red;
+    color: rgb(255, 0, 0);
 }

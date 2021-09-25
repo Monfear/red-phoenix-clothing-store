@@ -5,7 +5,8 @@ import { Route, Switch } from "react-router-dom";
 import { Navbar } from "./Components/Layout/Navbar/Navbar";
 import { Header } from "./Components/Pages/Header/Header";
 import { Error } from "./Components/Pages/Error/Error";
-import { Register } from "./Components/Pages/Register/Register";
+import { RegisterForm } from "./Components/Pages/RegisterForm/RegisterForm";
+import { LoginForm } from "./Components/Pages/LoginForm/LoginForm";
 
 function App() {
     // console.log(process.env);
@@ -19,7 +20,11 @@ function App() {
                 </Route>
 
                 <Route path="/register">
-                    <Register></Register>
+                    <RegisterForm></RegisterForm>
+                </Route>
+
+                <Route path="/login">
+                    <LoginForm></LoginForm>
                 </Route>
 
                 <Route path="*">

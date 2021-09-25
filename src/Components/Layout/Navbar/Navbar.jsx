@@ -32,7 +32,9 @@ export const Navbar = () => {
                 <span className={styles.accountText}>Account</span>
             </Link>
 
-            <button className={styles.btnLog}>Log in</button>
+            <Link to="/login">
+                <button className={styles.btnLog}>Log in</button>
+            </Link>
         </div>
     );
 };

@@ -19,10 +19,12 @@
     color: #fff;
     margin-right: 5rem;
     text-decoration: none;
+    transition: all 0.2s;
 }
 
 .navLink:hover {
     text-decoration: underline;
+    color: var(--color-complementary);
 }
 
 .activeNavLink {

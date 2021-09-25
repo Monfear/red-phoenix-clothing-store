@@ -1,0 +1,67 @@
+.container {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("./../../../img/background-register.jpg");
+    background-size: cover;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid var(--color-complementary);
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+.label {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.input {
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem;
+    outline: 0;
+}
+
+.input:focus {
+    background-color: var(--color-complementary);
+}
+
+.message {
+    font-size: 1.5rem;
+}
+
+.btnRegister {
+    width: 200px;
+    height: 60px;
+
+    font-size: 2.5rem;
+
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+
+    border: 2px solid #af0808;
+    border-radius: 10rem;
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+
+.btnRegister:hover {
+    background-color: var(--color-complementary);
+}
+
+.success {
+    color: rgb(74, 241, 74);
+}
+
+.error {
+    color: rgb(255, 0, 0);
+}

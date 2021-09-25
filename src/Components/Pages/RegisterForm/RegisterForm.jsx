@@ -1,8 +1,8 @@
-import styles from "./Register.module.css";
+import styles from "./RegisterForm.module.css";
 
 import React, { useRef, useState } from "react";
 
-export const Register = () => {
+export const RegisterForm = () => {
     const [emailInfo, setEmailInfo] = useState({ value: "", message: "", isSuccess: false, isTouched: false });
     const [passwordInfo, setPasswordInfo] = useState({ value: "", message: "", isSuccess: false, isTouched: false });
     const [isFormConfirmed, setIsFormConfirmed] = useState(false);
@@ -86,21 +86,25 @@ export const Register = () => {
     };
 
     return (
-        <section className={styles.register}>
+        <section className={styles.container}>
             <form className={styles.form} onSubmit={submitHandler}>
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" placeholder="Enter your email" ref={refInputEmail} onBlur={blurHandlerEmail} onChange={changeHandlerEmail} />
-                <small className={emailInfo.isSuccess ? styles.success : styles.error}>{emailInfo.message}</small>
+                <label className={styles.label} htmlFor="email">
+                    Email
+                </label>
+                <input className={styles.input} type="text" id="email" placeholder="Enter your email" ref={refInputEmail} onBlur={blurHandlerEmail} onChange={changeHandlerEmail} />
+                <small className={`${styles.message} ${emailInfo.isSuccess ? styles.success : styles.error}`}>{emailInfo.message}</small>
 
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" ref={refInputPassword} onBlur={blurHandlerPassword} onChange={changeHandlerPassword} />
-                <small className={passwordInfo.isSuccess ? styles.success : styles.error}>{passwordInfo.message}</small>
+                <label className={styles.label} htmlFor="password">
+                    Password
+                </label>
+                <input className={styles.input} type="password" id="password" placeholder="Enter your password" ref={refInputPassword} onBlur={blurHandlerPassword} onChange={changeHandlerPassword} />
+                <small className={`${styles.message} ${passwordInfo.isSuccess ? styles.success : styles.error}`}>{passwordInfo.message}</small>
 
                 <button className={styles.btnRegister}>Register</button>
 
-                {isFormValid && isFormConfirmed && <small className={styles.success}>Account has been created! You can login now.</small>}
+                {isFormValid && isFormConfirmed && <small className={`${styles.message} ${styles.success}`}>Account has been created! You can login now.</small>}
 
-                {!isFormValid && isFormConfirmed && <small className={styles.error}>Please enter correct email adress and password.</small>}
+                {!isFormValid && isFormConfirmed && <small className={`${styles.message} ${styles.error}`}>Please enter correct email adress and password.</small>}
             </form>
         </section>
     );
