@@ -9,7 +9,6 @@ import { RegisterForm } from "./Components/Pages/RegisterForm/RegisterForm";
 import { LoginForm } from "./Components/Pages/LoginForm/LoginForm";
 
 function App() {
-    // console.log(process.env);
     return (
         <div className="App">
             <Navbar></Navbar>

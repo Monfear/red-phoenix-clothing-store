@@ -2,6 +2,9 @@ import styles from "./LoginForm.module.css";
 
 import React, { useState, useRef } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { TEST } from "../../../Redux/actions/auth-actions";
+
 export const LoginForm = () => {
     const [isFormValid, setIsFormValid] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -11,6 +14,20 @@ export const LoginForm = () => {
 
     const refInputEmail = useRef();
     const refInputPassword = useRef();
+
+    const authSelector = useSelector((store) => store.auth);
+
+    const dispatch = useDispatch();
+    console.log(authSelector);
+
+    const test = () => {
+        dispatch({
+            type: TEST,
+            payload: {
+                item: "XD",
+            },
+        });
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -32,7 +49,9 @@ export const LoginForm = () => {
                 </label>
                 <input className={styles.input} type="password" id="password" placeholder="Enter your password" ref={refInputPassword} />
 
-                <button className={styles.btnRegister}>Log in</button>
+                <button className={styles.btnRegister} onClick={test}>
+                    Log in
+                </button>
 
                 {!isFormValid && isFormSubmitted && <small className={`${styles.message} ${styles.error}`}>Wrong email adress or/and password.</small>}
             </form>
