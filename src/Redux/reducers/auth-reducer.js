@@ -9,7 +9,7 @@ export const authReducer = (state = defaultState, action) => {
             return [...state, action.payload.item];
 
         default:
-            console.log(`there is no action type: ${action.type}`);
+            console.log(`there is no action type in authReducer: ${action.type}`);
             return state;
     }
 };

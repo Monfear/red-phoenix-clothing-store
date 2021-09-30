@@ -1,16 +1,25 @@
 import styles from "./RegisterForm.module.css";
 
 import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { END_LOAD, START_LOAD } from "../../../Redux/actions/ui-actions";
+
+import { Loader } from "./../../Interface/Loader/Loader";
 
 export const RegisterForm = () => {
     const [emailInfo, setEmailInfo] = useState({ value: "", message: "", isSuccess: false, isTouched: false });
     const [passwordInfo, setPasswordInfo] = useState({ value: "", message: "", isSuccess: false, isTouched: false });
     const [isFormConfirmed, setIsFormConfirmed] = useState(false);
+    const [isAuthValid, setIsAuthValid] = useState(false);
 
     const isFormValid = emailInfo.isSuccess === true && passwordInfo.isSuccess === true;
 
     const refInputEmail = useRef();
     const refInputPassword = useRef();
+
+    const dispatch = useDispatch();
+    const uiSelector = useSelector((store) => store.ui);
+    console.log(uiSelector.isLoading);
 
     const checkEmail = () => {
         setIsFormConfirmed(false);
@@ -63,6 +72,43 @@ export const RegisterForm = () => {
         checkPassword();
 
         setIsFormConfirmed(true);
+
+        const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
+
+        if (isFormValid) {
+            dispatch({ type: START_LOAD });
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: emailInfo.value,
+                    password: passwordInfo.value,
+                    returnSecureToken: true,
+                }),
+            })
+                .then((response) => {
+                    dispatch({ type: END_LOAD });
+
+                    if (response.ok) {
+                        setIsAuthValid(true);
+                        return response.json();
+                    } else {
+                        setIsAuthValid(false);
+                        throw new Error("Something went wrong");
+                    }
+                })
+                .then((data) => {
+                    if (data) {
+                        console.log(data.idToken);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }
     };
 
     const blurHandlerEmail = () => {
@@ -100,11 +146,11 @@ export const RegisterForm = () => {
                 <input className={styles.input} type="password" id="password" placeholder="Enter your password" ref={refInputPassword} onBlur={blurHandlerPassword} onChange={changeHandlerPassword} />
                 <small className={`${styles.message} ${passwordInfo.isSuccess ? styles.success : styles.error}`}>{passwordInfo.message}</small>
 
-                <button className={styles.btnRegister}>Register</button>
+                {uiSelector.isLoading ? <Loader></Loader> : <button className={styles.btnRegister}>Register</button>}
 
-                {isFormValid && isFormConfirmed && <small className={`${styles.message} ${styles.success}`}>Account has been created! You can login now.</small>}
+                {isFormValid && isFormConfirmed && isAuthValid && <small className={`${styles.message} ${styles.success}`}>Account has been created! You can login now.</small>}
 
-                {!isFormValid && isFormConfirmed && <small className={`${styles.message} ${styles.error}`}>Please enter correct email adress and password.</small>}
+                {(!isFormValid && isFormConfirmed) || (!isAuthValid && isFormConfirmed && <small className={`${styles.message} ${styles.error}`}>Please enter correct and no existing email adress and password.</small>)}
             </form>
         </section>
     );

@@ -2,9 +2,6 @@ import styles from "./LoginForm.module.css";
 
 import React, { useState, useRef } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { TEST } from "../../../Redux/actions/auth-actions";
-
 export const LoginForm = () => {
     const [isFormValid, setIsFormValid] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -14,20 +11,6 @@ export const LoginForm = () => {
 
     const refInputEmail = useRef();
     const refInputPassword = useRef();
-
-    const authSelector = useSelector((store) => store.auth);
-
-    const dispatch = useDispatch();
-    console.log(authSelector);
-
-    const test = () => {
-        dispatch({
-            type: TEST,
-            payload: {
-                item: "XD",
-            },
-        });
-    };
 
     const submitHandler = (e) => {
         e.preventDefault();
