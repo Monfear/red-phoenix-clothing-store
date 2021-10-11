@@ -91,6 +91,7 @@ export const RegisterForm = () => {
             })
                 .then((response) => {
                     dispatch({ type: END_LOAD });
+                    console.log(response);
 
                     if (response.ok) {
                         setIsAuthValid(true);
@@ -150,7 +151,7 @@ export const RegisterForm = () => {
 
                 {isFormValid && isFormConfirmed && isAuthValid && <small className={`${styles.message} ${styles.success}`}>Account has been created! You can login now.</small>}
 
-                {(!isFormValid && isFormConfirmed) || (!isAuthValid && isFormConfirmed && <small className={`${styles.message} ${styles.error}`}>Please enter correct and no existing email adress and password.</small>)}
+                {(!isFormValid && isFormConfirmed && !uiSelector.isLoading) || (!isAuthValid && isFormConfirmed && !uiSelector.isLoading && <small className={`${styles.message} ${styles.error}`}>Please enter correct and no existing email adress and password.</small>)}
             </form>
         </section>
     );
