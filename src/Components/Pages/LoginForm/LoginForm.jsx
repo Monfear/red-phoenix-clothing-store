@@ -28,6 +28,7 @@ export const LoginForm = () => {
         // setPassword(refInputPassword.current.value);
 
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
+        console.log(process.env.REACT_APP_FIREBASE_API_KEY);
 
         const email = refInputEmail.current.value;
         const password = refInputPassword.current.value;
@@ -51,14 +52,20 @@ export const LoginForm = () => {
                 dispatch({ type: END_LOAD });
 
                 if (response.ok) {
-                    return response.json();
+                    // return response.json();
+                    console.log("response ok");
+                    console.log(response);
+                    setErrorMessage("");
                 } else {
+                    console.log("response nie ok");
                     response.json().then((data) => {
+                        console.log(response);
                         setErrorMessage(data.error.message);
                     });
                 }
             })
             .then((data) => {
+                console.log("wszystko git");
                 console.log(data);
             });
     };

@@ -50,7 +50,7 @@ export const RegisterForm = () => {
 
         if (password.trim().length >= 6 && password.match(/[0-9]/g) !== null && password.match(/[0-9]/g).length >= 2) {
             setPasswordInfo({
-                value: refInputEmail.current.value,
+                value: refInputPassword.current.value,
                 message: "Password is valid",
                 isTouched: true,
                 isSuccess: true,
@@ -110,6 +110,8 @@ export const RegisterForm = () => {
                     console.log(error.message);
                 });
         }
+
+        console.log(emailInfo.value, passwordInfo.value);
     };
 
     const blurHandlerEmail = () => {
