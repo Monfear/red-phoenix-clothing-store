@@ -1,8 +1,13 @@
 import styles from "./LoginForm.module.css";
 
 import React, { useState, useRef } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { END_LOAD, START_LOAD } from "../../../Redux/actions/ui-actions";
+import { LOGIN } from "../../../Redux/actions/auth-actions";
+
+import { Loader } from "../../Interface/Loader/Loader";
+import { useHistory } from "react-router-dom";
 
 export const LoginForm = () => {
     const [isFormValid, setIsFormValid] = useState(false);
@@ -10,22 +15,18 @@ export const LoginForm = () => {
 
     const [errorMessage, setErrorMessage] = useState("");
 
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-
     const refInputEmail = useRef();
     const refInputPassword = useRef();
 
-    const uiSelector = useSelector((store) => store.ui);
     const dispatch = useDispatch();
+    const uiSelector = useSelector((store) => store.ui);
+
+    const history = useHistory();
 
     const submitHandler = (e) => {
         e.preventDefault();
 
         setIsFormSubmitted(true);
-
-        // setEmail(refInputEmail.current.value);
-        // setPassword(refInputPassword.current.value);
 
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
         console.log(process.env.REACT_APP_FIREBASE_API_KEY);
@@ -52,21 +53,31 @@ export const LoginForm = () => {
                 dispatch({ type: END_LOAD });
 
                 if (response.ok) {
-                    // return response.json();
-                    console.log("response ok");
-                    console.log(response);
                     setErrorMessage("");
-                } else {
-                    console.log("response nie ok");
+                    setIsFormValid(true);
+
+                    history.replace("/account");
+
                     response.json().then((data) => {
-                        console.log(response);
+                        dispatch({
+                            type: LOGIN,
+                            payload: {
+                                email: data.email,
+                                token: data.idToken,
+                            },
+                        });
+
+                        console.log(data);
+                    });
+                } else {
+                    response.json().then((data) => {
                         setErrorMessage(data.error.message);
+                        setIsFormValid(false);
                     });
                 }
             })
-            .then((data) => {
-                console.log("wszystko git");
-                console.log(data);
+            .catch((error) => {
+                console.log(error);
             });
     };
 
@@ -83,7 +94,7 @@ export const LoginForm = () => {
                 </label>
                 <input className={styles.input} type="password" id="password" placeholder="Enter your password" ref={refInputPassword} />
 
-                <button className={styles.btnRegister}>Log in</button>
+                {uiSelector.isLoading ? <Loader></Loader> : <button className={styles.btnRegister}>Log in</button>}
 
                 {!isFormValid && isFormSubmitted && <small className={`${styles.message} ${styles.error}`}>{errorMessage}</small>}
             </form>

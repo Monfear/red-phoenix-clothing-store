@@ -1,0 +1,67 @@
+.account {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.emailInfo {
+    margin-bottom: 3rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.changePasswordInfo {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+}
+
+.label {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.input {
+    padding: 0.7rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input:focus {
+    background-color: var(--color-complementary);
+}
+
+.btn {
+    font-size: 2.5rem;
+    padding: 1rem;
+    border: 2px solid #af0808;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--color-complementary);
+}
+
+.message {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.message.success {
+    color: rgb(74, 241, 74);
+}
+
+.message.error {
+    color: rgb(255, 0, 0);
+}

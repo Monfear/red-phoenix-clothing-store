@@ -19,7 +19,6 @@ export const RegisterForm = () => {
 
     const dispatch = useDispatch();
     const uiSelector = useSelector((store) => store.ui);
-    console.log(uiSelector.isLoading);
 
     const checkEmail = () => {
         setIsFormConfirmed(false);

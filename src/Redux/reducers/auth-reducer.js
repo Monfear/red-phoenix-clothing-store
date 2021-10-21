@@ -1,15 +1,33 @@
-import { TEST } from "../actions/auth-actions";
+import { LOGIN, LOGOUT } from "../actions/auth-actions";
 
-const defaultState = [1, 2, 3];
+const defaultState = {
+    token: "",
+    email: "",
+    isLoggedIn: false,
+};
 
 export const authReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case TEST:
-            console.log("reducer git");
-            return [...state, action.payload.item];
+        case LOGIN:
+            console.log("LOGIN");
+
+            return {
+                token: action.payload.token,
+                email: action.payload.email,
+                isLoggedIn: true,
+            };
+
+        case LOGOUT:
+            console.log("LOGOUT");
+
+            return {
+                token: "",
+                email: "",
+                isLoggedIn: false,
+            };
 
         default:
-            console.log(`there is no action type in authReducer: ${action.type}`);
+            // console.log(`there is no action type in authReducer: ${action.type}`);
             return state;
     }
 };

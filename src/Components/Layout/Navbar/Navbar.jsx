@@ -3,9 +3,19 @@ import styles from "./Navbar.module.css";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+
 import logo from "./../../../img/logo-full.png";
+import { LOGOUT } from "../../../Redux/actions/auth-actions";
 
 export const Navbar = () => {
+    const dispatch = useDispatch();
+    const authSelector = useSelector((store) => store.auth);
+
+    const logoutHandler = () => {
+        dispatch({ type: LOGOUT });
+    };
+
     return (
         <div className={styles.navbar}>
             <Link to="/">
@@ -32,9 +42,21 @@ export const Navbar = () => {
                 <span className={styles.accountText}>Account</span>
             </Link>
 
-            <Link to="/login">
-                <button className={styles.btnLog}>Log in</button>
-            </Link>
+            {!authSelector.isLoggedIn ? (
+                <Link to="/login">
+                    <button className={styles.btnLog}>Log in</button>
+                </Link>
+            ) : (
+                <Link to="/">
+                    <button className={styles.btnLog} onClick={logoutHandler}>
+                        Log out
+                    </button>
+                </Link>
+            )}
+
+            {/* <Link to="/login">
+                <button className={styles.btnLog}>{authSelector.isLoggedIn ? "Log out" : "Log in"}</button>
+            </Link> */}
         </div>
     );
 };

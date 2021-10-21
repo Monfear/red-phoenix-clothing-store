@@ -20,7 +20,7 @@ export const uiReducer = (state = defaultState, action) => {
         }
 
         default:
-            console.log(`there is no action type in uiReducer: ${action.type}`);
+            // console.log(`there is no action type in uiReducer: ${action.type}`);
             return {
                 ...state,
             };
