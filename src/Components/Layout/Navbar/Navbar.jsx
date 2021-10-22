@@ -4,9 +4,10 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-
-import logo from "./../../../img/logo-full.png";
 import { LOGOUT } from "../../../Redux/actions/auth-actions";
+
+import logoBig from "./../../../img/logo-full.png";
+import logoSmall from "./../../../img/logo.png";
 
 export const Navbar = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,8 @@ export const Navbar = () => {
     return (
         <div className={styles.navbar}>
             <Link to="/">
-                <img src={logo} alt="logo" />
+                <img src={logoBig} alt="logo" className={styles.logoBig} />
+                <img src={logoSmall} alt="logo" className={styles.logoSmall} />
             </Link>
 
             <nav className={styles.nav}>
@@ -32,15 +34,17 @@ export const Navbar = () => {
             </nav>
 
             <button className={styles.btnCart}>
-                <span>Your cart</span>
+                <span className={styles.btnCartText}>Your cart</span>
                 <i className={`${"fas fa-shopping-cart"} ${styles.cartIcon}`}></i>
                 <span className={styles.cartQuantity}>5</span>
             </button>
 
-            <Link to="/account" className={styles.accountContainer}>
-                <i className={`${"fas fa-user-circle"} ${styles.accountIcon}`}></i>
-                <span className={styles.accountText}>Account</span>
-            </Link>
+            {authSelector.isLoggedIn && (
+                <Link to="/account" className={styles.accountContainer}>
+                    <i className={`${"fas fa-user-circle"} ${styles.accountIcon}`}></i>
+                    <span className={styles.accountText}>Account</span>
+                </Link>
+            )}
 
             {!authSelector.isLoggedIn ? (
                 <Link to="/login">
@@ -53,10 +57,6 @@ export const Navbar = () => {
                     </button>
                 </Link>
             )}
-
-            {/* <Link to="/login">
-                <button className={styles.btnLog}>{authSelector.isLoggedIn ? "Log out" : "Log in"}</button>
-            </Link> */}
         </div>
     );
 };
