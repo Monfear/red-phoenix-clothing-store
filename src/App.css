@@ -3,6 +3,9 @@
 :root {
     --color-primary: #af0808;
     --color-complementary: #f7e85d;
+
+    --color-secondary-dark: #151e2f;
+    --color-secondary-light: #345074;
 }
 
 * {

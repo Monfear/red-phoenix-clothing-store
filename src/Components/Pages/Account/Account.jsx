@@ -1,10 +1,16 @@
 import styles from "./Account.module.css";
 
-import { useSelector } from "react-redux";
 import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { END_LOAD, START_LOAD } from "../../../Redux/actions/ui-actions";
+
+import { Loader } from "./../../Interface/Loader/Loader";
 
 export const Account = () => {
     const authSelector = useSelector((store) => store.auth);
+    const uiSelector = useSelector((store) => store.ui);
+
+    const dispatch = useDispatch();
 
     const [message, setMessage] = useState("");
     const [isFormValid, setIsFormValid] = useState(false);
@@ -28,8 +34,7 @@ export const Account = () => {
             if (password === confirmedPassword) {
                 setIsFormValid(true);
 
-                console.log(authSelector.token);
-                console.log(password);
+                dispatch({ type: START_LOAD });
 
                 fetch(url, {
                     method: "POST",
@@ -41,18 +46,32 @@ export const Account = () => {
                         password: password,
                         returnSecureToken: false,
                     }),
-                }).then((response) => {
-                    if (response.ok) {
-                        response.json().then((data) => console.log(data));
-                    } else {
-                        response.json().then((data) => console.log(data));
-                    }
-                });
+                })
+                    .then((response) => {
+                        dispatch({ type: END_LOAD });
 
-                refPassword.current.value = "";
-                refConfirmedPassword.current.value = "";
+                        if (response.ok) {
+                            response.json().then((data) => setMessage("Password has been changed"));
 
-                setMessage("Password has been changed");
+                            refPassword.current.value = "";
+                            refConfirmedPassword.current.value = "";
+
+                            setIsFormValid(true);
+                        } else {
+                            response.json().then((data) => {
+                                setIsFormValid(false);
+                                setMessage(data.error.message);
+
+                                if (data.error.message === "TOKEN_EXPIRED") {
+                                    setMessage(data.error.message + " " + "(You need to log in again)");
+                                }
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        setIsFormValid(false);
+                        setMessage("Something went wrong");
+                    });
             } else {
                 setMessage("Passwords do not match");
             }
@@ -80,12 +99,17 @@ export const Account = () => {
                 </label>
                 <input type="password" placeholder="New password..." id="password-new" ref={refConfirmedPassword} className={styles.input} />
 
-                <button className={styles.btn} onClick={changePasswordHandler}>
-                    Change password
-                </button>
+                {uiSelector.isLoading ? (
+                    <Loader></Loader>
+                ) : (
+                    <button className={styles.btn} onClick={changePasswordHandler}>
+                        Change password
+                    </button>
+                )}
 
-                {isFormValid && isFormSubmitted && <small className={`${styles.message} ${styles.success}`}>{message}</small>}
-                {!isFormValid && isFormSubmitted && <small className={`${styles.message} ${styles.error}`}>{message}</small>}
+                {!uiSelector.isLoading && isFormValid && isFormSubmitted && <small className={`${styles.message} ${styles.success}`}>{message}</small>}
+
+                {!uiSelector.isLoading && !isFormValid && isFormSubmitted && <small className={`${styles.message} ${styles.error}`}>{message}</small>}
             </form>
         </section>
     );
