@@ -10,6 +10,10 @@ import { Error } from "./Components/Pages/Error/Error";
 import { RegisterForm } from "./Components/Pages/RegisterForm/RegisterForm";
 import { LoginForm } from "./Components/Pages/LoginForm/LoginForm";
 import { Account } from "./Components/Pages/Account/Account";
+import { Men } from "./Components/Pages/Men/Men";
+import { Women } from "./Components/Pages/Women/Women";
+
+import { Shoes } from "./Components/Pages/Categories/Men/Shoes/Shoes";
 
 function App() {
     const authSelector = useSelector((store) => store.auth);
@@ -36,6 +40,18 @@ function App() {
                         <Account></Account>
                     </Route>
                 )}
+
+                <Route path="/men" exact>
+                    <Men></Men>
+                </Route>
+
+                <Route path="/men/shoes">
+                    <Shoes></Shoes>
+                </Route>
+
+                <Route path="/women" exact>
+                    <Women></Women>
+                </Route>
 
                 <Route path="*">
                     <Error></Error>

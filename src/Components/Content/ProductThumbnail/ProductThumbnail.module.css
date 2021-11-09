@@ -1,0 +1,31 @@
+.thumbnail {
+    border: 2px solid var(--color-secondary-light);
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+}
+
+.picture {
+    width: 300px;
+    height: 300px;
+    border-bottom: 2px solid var(--color-secondary-light);
+}
+
+.info {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title {
+    font-size: 2.2rem;
+}
+
+.price {
+    font-size: 1.8rem;
+}
+
+.star {
+    font-size: 1.6rem;
+}
