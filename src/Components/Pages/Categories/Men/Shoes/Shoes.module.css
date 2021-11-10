@@ -1,5 +1,5 @@
 .shoes {
-    padding-top: 15rem;
+    margin-top: 15rem;
 }
 
 .heading {
@@ -10,4 +10,13 @@
 
 .products {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+}
+
+@media (max-width: 480px) {
+    .shoes {
+        margin-top: 10rem;
+    }
 }

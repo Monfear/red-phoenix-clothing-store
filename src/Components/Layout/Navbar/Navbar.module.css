@@ -1,8 +1,8 @@
 .navbar {
-    position: fixed;
+    position: absolute;
+    top: 0;
     width: 100%;
     padding: 0.5rem 7%;
-    margin-top: 1rem;
     background-image: url(./../../../img/bg-nav.jpg);
     background-position: 0 45px;
 

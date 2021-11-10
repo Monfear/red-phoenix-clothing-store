@@ -1,7 +1,6 @@
 import styles from "./Shoes.module.css";
 
-import { products } from "./../../../../../data/products";
-
+import { productsData } from "./../../../../../data/products";
 import { ProductThumbnail } from "./../../../../Content/ProductThumbnail/ProductThumbnail";
 
 export const Shoes = () => {
@@ -10,9 +9,11 @@ export const Shoes = () => {
             <h1 className={styles.heading}>Shoes</h1>
 
             <div className={styles.products}>
-                {products.men.shoes.map((product) => (
-                    <ProductThumbnail></ProductThumbnail>
-                ))}
+                {productsData.men.shoes.map((product) => {
+                    const { id, name, price, rating, thumbnailImg } = product;
+
+                    return <ProductThumbnail key={id} name={name} price={price} rating={rating} thumbnailImg={thumbnailImg} path={`/men/shoes/${id}`}></ProductThumbnail>;
+                })}
             </div>
         </div>
     );
