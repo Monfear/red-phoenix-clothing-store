@@ -1,8 +1,10 @@
 import shoes111 from "./../img/clothes/items/Nike air max 90/01.jpg";
-import shoes222 from "./../img/clothes/items/Air jordan XXXVI basketball shoes/01.jpg";
-import shoes333 from "./../img/clothes/items/Jordan stay loyal/01.jpg";
-import shoes444 from "./../img/clothes/items/Nike air more uptempo/01.jpg";
-import shoes555 from "./../img/clothes/items/Nike giannis immortality force/01.jpg";
+import shoes112 from "./../img/clothes/items/Nike air max 90/02.jpg";
+import shoes113 from "./../img/clothes/items/Nike air max 90/03.jpg";
+import shoes221 from "./../img/clothes/items/Air jordan XXXVI basketball shoes/01.jpg";
+import shoes331 from "./../img/clothes/items/Jordan stay loyal/01.jpg";
+import shoes441 from "./../img/clothes/items/Nike air more uptempo/01.jpg";
+import shoes551 from "./../img/clothes/items/Nike giannis immortality force/01.jpg";
 
 export const productsData = {
     men: {
@@ -10,37 +12,39 @@ export const productsData = {
             {
                 id: 111,
                 name: "Nike air max 90",
-                price: 150,
+                price: 150.99,
                 rating: 3,
                 thumbnailImg: shoes111,
+                picture1: shoes112,
+                picture2: shoes113,
             },
             {
                 id: 222,
                 name: "Air jordan XXXVI",
-                price: 180,
+                price: 180.29,
                 rating: 5,
-                thumbnailImg: shoes222,
+                thumbnailImg: shoes221,
             },
             {
                 id: 333,
                 name: "Jordan stay loyal",
-                price: 200,
+                price: 200.99,
                 rating: 4,
-                thumbnailImg: shoes333,
+                thumbnailImg: shoes331,
             },
             {
                 id: 444,
                 name: "Nike air more uptempo",
-                price: 140,
+                price: 140.99,
                 rating: 3,
-                thumbnailImg: shoes444,
+                thumbnailImg: shoes441,
             },
             {
                 id: 555,
                 name: "Nike giannis force",
-                price: 215,
+                price: 215.55,
                 rating: 5,
-                thumbnailImg: shoes555,
+                thumbnailImg: shoes551,
             },
         ],
     },
