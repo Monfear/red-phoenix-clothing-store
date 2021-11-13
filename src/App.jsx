@@ -15,6 +15,7 @@ import { Women } from "./Components/Pages/Women/Women";
 
 import { Shoes } from "./Components/Pages/Categories/Men/Shoes/Shoes";
 import { ProductDetails } from "./Components/Content/ProductDetails/ProductDetails";
+import { Cart } from "./Components/Pages/Cart/Cart";
 
 function App() {
     const authSelector = useSelector((store) => store.auth);
@@ -41,6 +42,10 @@ function App() {
                         <Account></Account>
                     </Route>
                 )}
+
+                <Route path="/cart">
+                    <Cart></Cart>
+                </Route>
 
                 <Route path="/men" exact>
                     <Men></Men>

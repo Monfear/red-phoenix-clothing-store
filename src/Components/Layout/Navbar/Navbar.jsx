@@ -12,6 +12,7 @@ import logoSmall from "./../../../img/logo.png";
 export const Navbar = () => {
     const dispatch = useDispatch();
     const authSelector = useSelector((store) => store.auth);
+    const cartSelector = useSelector((store) => store.cart);
 
     const logoutHandler = () => {
         dispatch({ type: LOGOUT });
@@ -33,11 +34,13 @@ export const Navbar = () => {
                 </NavLink>
             </nav>
 
-            <button className={styles.btnCart}>
-                <span className={styles.btnCartText}>Your cart</span>
-                <i className={`${"fas fa-shopping-cart"} ${styles.cartIcon}`}></i>
-                <span className={styles.cartQuantity}>5</span>
-            </button>
+            <Link to="/cart">
+                <button className={styles.btnCart}>
+                    <span className={styles.btnCartText}>Your cart</span>
+                    <i className={`${"fas fa-shopping-cart"} ${styles.cartIcon}`}></i>
+                    <span className={styles.cartQuantity}>{cartSelector.totalQuantity}</span>
+                </button>
+            </Link>
 
             {authSelector.isLoggedIn && (
                 <Link to="/account" className={styles.accountContainer}>

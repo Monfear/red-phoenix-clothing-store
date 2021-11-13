@@ -4,10 +4,17 @@ import { productsData } from "./../../../data/products";
 
 import { useEffect, useState, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { ADD_ITEM } from "../../../Redux/actions/cart-actions";
 
 export const ProductDetails = () => {
     const [activeImg, setActiveImage] = useState(null);
     const [sliderPosition, setSliderPosition] = useState(0);
+
+    const cartSelector = useSelector((store) => store.cart);
+    console.log(cartSelector);
+
+    const dispatchCart = useDispatch();
 
     const thumbnailsEl = useRef();
 
@@ -39,8 +46,6 @@ export const ProductDetails = () => {
         thumbnailsEl.current.scrollLeft = sliderPosition;
     }, [sliderPosition]);
 
-    console.log(product);
-
     const changeActiveImage = (e) => {
         const parent = e.target.parentElement;
 
@@ -58,6 +63,15 @@ export const ProductDetails = () => {
 
     const moveSliderLeft = () => {
         setSliderPosition((prev) => prev - 50);
+    };
+
+    const addItemToCart = () => {
+        dispatchCart({
+            type: ADD_ITEM,
+            payload: {
+                item: product,
+            },
+        });
     };
 
     return (
@@ -91,7 +105,9 @@ export const ProductDetails = () => {
                     <i className={`${product.rating > 4 ? "fas fa-star" : "far fa-star"} ${styles.star}`}></i>
                 </div>
 
-                <button className={styles.addToCartBtn}>add to cart</button>
+                <button className={styles.addToCartBtn} onClick={addItemToCart}>
+                    add to cart
+                </button>
             </section>
         </div>
     );
