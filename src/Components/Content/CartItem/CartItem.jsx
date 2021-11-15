@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { REMOVE_ITEM } from "../../../Redux/actions/cart-actions";
 
-export const CartItem = ({ id, name, price, rating, thumbnailImg }) => {
+export const CartItem = ({ id, name, price, rating, thumbnailImg, amount }) => {
     const dispatchCart = useDispatch();
 
     const removeItemFromCart = () => {
@@ -19,7 +19,9 @@ export const CartItem = ({ id, name, price, rating, thumbnailImg }) => {
     return (
         <section className={styles.cartItem}>
             <div className={styles.info}>
-                <h1 className={styles.name}>{name}</h1>
+                <h1 className={styles.name}>
+                    {name} {amount > 1 && `(${amount})`}
+                </h1>
                 <h2 className={styles.price}>${price}</h2>
                 <div className={styles.productRating}>
                     <i className={`${rating > 0 ? "fas fa-star" : "far fa-star"} ${styles.star}`}></i>
