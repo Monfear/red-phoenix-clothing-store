@@ -15,15 +15,15 @@ export const Cart = () => {
         dispatchCart({ type: CLEAR_CART });
     };
 
+    const uniqid = require("uniqid");
+
     return (
         <section className={styles.cart}>
             <h1 className={styles.title}>Your cart</h1>
 
             <div className={styles.products}>
                 {items.map((item) => {
-                    const { id } = item;
-
-                    return <CartItem id={id} {...item}></CartItem>;
+                    return <CartItem key={uniqid()} {...item}></CartItem>;
                 })}
             </div>
 

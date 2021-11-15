@@ -1,6 +1,21 @@
 import styles from "./CartItem.module.css";
 
+import { useDispatch } from "react-redux";
+
+import { REMOVE_ITEM } from "../../../Redux/actions/cart-actions";
+
 export const CartItem = ({ id, name, price, rating, thumbnailImg }) => {
+    const dispatchCart = useDispatch();
+
+    const removeItemFromCart = () => {
+        dispatchCart({
+            type: REMOVE_ITEM,
+            payload: {
+                id: id,
+            },
+        });
+    };
+
     return (
         <section className={styles.cartItem}>
             <div className={styles.info}>
@@ -17,7 +32,9 @@ export const CartItem = ({ id, name, price, rating, thumbnailImg }) => {
 
             <img src={thumbnailImg} alt="thumbnail" className={styles.thumbnail} />
 
-            <button className={styles.cartBtn}>Remove</button>
+            <button className={styles.cartBtn} onClick={removeItemFromCart}>
+                Remove
+            </button>
         </section>
     );
 };

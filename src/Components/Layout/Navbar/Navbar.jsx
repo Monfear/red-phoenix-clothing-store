@@ -38,7 +38,7 @@ export const Navbar = () => {
                 <button className={styles.btnCart}>
                     <span className={styles.btnCartText}>Your cart</span>
                     <i className={`${"fas fa-shopping-cart"} ${styles.cartIcon}`}></i>
-                    <span className={styles.cartQuantity}>{cartSelector.totalQuantity}</span>
+                    <span className={styles.cartQuantity}>{cartSelector.totalQuantity ? cartSelector.totalQuantity : "0"}</span>
                 </button>
             </Link>
 

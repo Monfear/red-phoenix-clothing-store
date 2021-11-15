@@ -17,6 +17,7 @@ export const productsData = {
                 thumbnailImg: shoes111,
                 picture1: shoes112,
                 picture2: shoes113,
+                amount: 1,
             },
             {
                 id: 222,
@@ -24,6 +25,7 @@ export const productsData = {
                 price: 180.29,
                 rating: 5,
                 thumbnailImg: shoes221,
+                amount: 1,
             },
             {
                 id: 333,
@@ -31,6 +33,7 @@ export const productsData = {
                 price: 200.99,
                 rating: 4,
                 thumbnailImg: shoes331,
+                amount: 1,
             },
             {
                 id: 444,
@@ -38,6 +41,7 @@ export const productsData = {
                 price: 140.99,
                 rating: 3,
                 thumbnailImg: shoes441,
+                amount: 1,
             },
             {
                 id: 555,
@@ -45,6 +49,7 @@ export const productsData = {
                 price: 215.55,
                 rating: 5,
                 thumbnailImg: shoes551,
+                amount: 1,
             },
         ],
     },

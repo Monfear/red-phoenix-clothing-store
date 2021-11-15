@@ -12,7 +12,7 @@ export const ProductDetails = () => {
     const [sliderPosition, setSliderPosition] = useState(0);
 
     const cartSelector = useSelector((store) => store.cart);
-    console.log(cartSelector);
+    // console.log(cartSelector);
 
     const dispatchCart = useDispatch();
 
