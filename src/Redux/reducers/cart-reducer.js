@@ -7,72 +7,64 @@ const defaultState = {
 };
 
 export const cartReducer = (state = defaultState, action) => {
-    switch (action.type) {
-        case ADD_ITEM:
-            const existingItemAdd = state.items.find((item) => item.id === action.payload.item.id);
-            const existingItemAddIdx = state.items.findIndex((item) => item.id === action.payload.item.id);
+    if (action.type === ADD_ITEM) {
+        const existingItem = state.items.find((item) => item.id === action.payload.item.id);
+        const existingItemIdx = state.items.findIndex((item) => item.id === action.payload.item.id);
 
-            let updatedItems = null;
+        let updatedItems = [];
 
-            if (!existingItemAdd) {
-                updatedItems = [...state.items, action.payload.item];
-            } else {
-                const updatedItem = {
-                    ...existingItemAdd,
-                    amount: existingItemAdd.amount + 1,
-                };
-
-                updatedItems = [...state.items];
-                updatedItems[existingItemAddIdx] = updatedItem;
-            }
-
-            console.log(existingItemAdd);
-
-            return {
-                // items: [...state.items, action.payload.item],
-                items: updatedItems,
-                totalQuantity: state.totalQuantity + 1,
-                totalAmount: state.totalAmount + action.payload.item.price,
+        if (!existingItem) {
+            updatedItems = [...state.items, action.payload.item];
+        } else {
+            const updatedItem = {
+                ...existingItem,
+                amount: existingItem.amount + 1,
             };
 
-        case REMOVE_ITEM:
-            console.log("remove");
+            updatedItems = [...state.items];
+            updatedItems[existingItemIdx] = updatedItem;
+        }
 
-            const existingItemRemove = state.items.find((item) => item.id === action.payload.id);
-            const existingItemRemoveIdx = state.items.findIndex((item) => item.id === action.payload.id);
+        return {
+            items: updatedItems,
+            totalQuantity: state.totalQuantity + 1,
+            totalAmount: state.totalAmount + action.payload.item.price,
+        };
+    } else if (action.type === REMOVE_ITEM) {
+        const existingItem = state.items.find((item) => item.id === action.payload.id);
+        const existingItemIdx = state.items.findIndex((item) => item.id === action.payload.id);
 
-            console.log(existingItemRemove);
+        if (existingItem.amount === 1) {
+            console.log("ostatni");
 
-            if (existingItemRemove.amount === 1) {
-                console.log("ostatni");
+            return {
+                items: state.items.filter((item) => item.id !== existingItem.id),
+                totalQuality: state.totalQuantity - 1,
+                totalAmount: (state.totalAmount -= existingItem.price),
+            };
+        } else {
+            console.log("nie ostatni");
 
-                return {
-                    items: state.items.filter((item) => item.id !== existingItemRemove.id),
-                    totalQuality: state.totalQuantity - 1,
-                    totalAmount: (state.totalAmount -= existingItemRemove.price),
-                };
-            } else {
-                console.log("nie ostatni");
+            const updatedItem = {
+                ...existingItem,
+                amount: state.items[existingItemIdx].amount - 1,
+            };
 
-                const updatedRemovingItem = {
-                    ...existingItemRemove,
-                    amount: state.items[existingItemRemoveIdx].amount - 1,
-                };
+            console.log("item", updatedItem.amount);
+            console.log("state", state.totalQuantity);
 
-                let updatedItems = [...state.items];
-                updatedItems[existingItemRemoveIdx] = updatedRemovingItem;
+            let updatedItems = [...state.items];
+            updatedItems[existingItemIdx] = updatedItem;
 
-                return {
-                    items: updatedItems,
-                    totalQuantity: state.totalQuantity - 1,
-                    totalAmount: (state.totalAmount -= updatedRemovingItem.price),
-                };
-            }
-
-        case CLEAR_CART:
-            return defaultState;
-
-        default:
-            return state;
+            return {
+                items: updatedItems,
+                totalQuantity: state.totalQuantity - 1,
+                totalAmount: (state.totalAmount -= updatedItem.price),
+            };
+        }
+    } else if (action.type === CLEAR_CART) {
+        return defaultState;
+    } else {
+        return state;
     }
 };
