@@ -35,16 +35,12 @@ export const cartReducer = (state = defaultState, action) => {
         const existingItemIdx = state.items.findIndex((item) => item.id === action.payload.id);
 
         if (existingItem.amount === 1) {
-            console.log("ostatni");
-
             return {
                 items: state.items.filter((item) => item.id !== existingItem.id),
-                totalQuality: state.totalQuantity - 1,
+                totalQuantity: state.totalQuantity - 1,
                 totalAmount: (state.totalAmount -= existingItem.price),
             };
         } else {
-            console.log("nie ostatni");
-
             const updatedItem = {
                 ...existingItem,
                 amount: state.items[existingItemIdx].amount - 1,

@@ -13,7 +13,7 @@ import { Account } from "./Components/Pages/Account/Account";
 import { Men } from "./Components/Pages/Men/Men";
 import { Women } from "./Components/Pages/Women/Women";
 
-import { Shoes } from "./Components/Pages/Categories/Men/Shoes/Shoes";
+import { Shoes } from "./Components/Pages/Products/Shoes/Shoes";
 import { ProductDetails } from "./Components/Content/ProductDetails/ProductDetails";
 import { Cart } from "./Components/Pages/Cart/Cart";
 
@@ -52,7 +52,7 @@ function App() {
                 </Route>
 
                 <Route path="/men/shoes" exact>
-                    <Shoes></Shoes>
+                    <Shoes gender={"men"}></Shoes>
                 </Route>
 
                 <Route path="/men/shoes/:id">
@@ -61,6 +61,14 @@ function App() {
 
                 <Route path="/women" exact>
                     <Women></Women>
+                </Route>
+
+                <Route path="/women/shoes" exact>
+                    <Shoes gender={"women"}></Shoes>
+                </Route>
+
+                <Route path="/women/shoes/:id">
+                    <ProductDetails></ProductDetails>
                 </Route>
 
                 <Route path="*">

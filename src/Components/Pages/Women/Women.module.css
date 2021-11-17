@@ -1,3 +1,59 @@
 .women {
-    background-color: violet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories {
+    margin-top: 20rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.category {
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    position: absolute;
+    font-size: 5rem;
+    color: #000;
+}
+
+.picture {
+    width: 300px;
+    height: 200px;
+    opacity: 0.5;
+    transition: all 0.7s;
+}
+
+.picture:hover {
+    transform: scale(1.5);
+    filter: sepia(30%);
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .categories {
+        width: 95%;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 10rem;
+    }
+
+    .picture {
+        width: 200px;
+        height: 200px;
+    }
+
+    .name {
+        font-size: 3rem;
+    }
 }

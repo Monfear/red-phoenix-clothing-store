@@ -87,7 +87,7 @@ export const LoginForm = () => {
                 <label className={styles.label} htmlFor="email">
                     Email
                 </label>
-                <input className={styles.input} type="text" id="email" placeholder="Enter your email" ref={refInputEmail} />
+                <input className={styles.input} type="email" id="email" placeholder="Enter your email" ref={refInputEmail} />
 
                 <label className={styles.label} htmlFor="password">
                     Password
