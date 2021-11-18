@@ -10,12 +10,12 @@ import { Error } from "./Components/Pages/Error/Error";
 import { RegisterForm } from "./Components/Pages/RegisterForm/RegisterForm";
 import { LoginForm } from "./Components/Pages/LoginForm/LoginForm";
 import { Account } from "./Components/Pages/Account/Account";
-import { Men } from "./Components/Pages/Men/Men";
-import { Women } from "./Components/Pages/Women/Women";
 
-import { Shoes } from "./Components/Pages/Products/Shoes/Shoes";
 import { ProductDetails } from "./Components/Content/ProductDetails/ProductDetails";
 import { Cart } from "./Components/Pages/Cart/Cart";
+
+import { Category } from "./Components/Pages/Category/Category";
+import { Categories } from "./Components/Pages/Categories/Categories";
 
 function App() {
     const authSelector = useSelector((store) => store.auth);
@@ -48,26 +48,42 @@ function App() {
                 </Route>
 
                 <Route path="/men" exact>
-                    <Men></Men>
+                    <Categories gender={"men"}></Categories>
                 </Route>
 
                 <Route path="/men/shoes" exact>
-                    <Shoes gender={"men"}></Shoes>
+                    <Category gender={"men"} category={"shoes"}></Category>
                 </Route>
 
                 <Route path="/men/shoes/:id">
                     <ProductDetails></ProductDetails>
                 </Route>
 
+                <Route path="/men/jackets" exact>
+                    <Category gender={"men"} category={"jackets"}></Category>
+                </Route>
+
+                <Route path="/men/jackets/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
                 <Route path="/women" exact>
-                    <Women></Women>
+                    <Categories gender={"women"}></Categories>
                 </Route>
 
                 <Route path="/women/shoes" exact>
-                    <Shoes gender={"women"}></Shoes>
+                    <Category gender={"women"} category={"shoes"}></Category>
                 </Route>
 
                 <Route path="/women/shoes/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/women/jackets" exact>
+                    <Category gender={"women"} category={"jackets"}></Category>
+                </Route>
+
+                <Route path="/women/jackets/:id">
                     <ProductDetails></ProductDetails>
                 </Route>
 

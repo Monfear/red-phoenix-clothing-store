@@ -1,4 +1,4 @@
-.shoes {
+.category {
     margin-top: 15rem;
 }
 
@@ -16,7 +16,7 @@
 }
 
 @media (max-width: 480px) {
-    .shoes {
+    .category {
         margin-top: 10rem;
     }
 }
