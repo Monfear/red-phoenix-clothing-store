@@ -67,6 +67,38 @@ function App() {
                     <ProductDetails></ProductDetails>
                 </Route>
 
+                <Route path="/men/caps" exact>
+                    <Category gender={"men"} category={"caps"}></Category>
+                </Route>
+
+                <Route path="/men/caps/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/men/sweatshirts" exact>
+                    <Category gender={"men"} category={"sweatshirts"}></Category>
+                </Route>
+
+                <Route path="/men/sweatshirts/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/men/trousers" exact>
+                    <Category gender={"men"} category={"trousers"}></Category>
+                </Route>
+
+                <Route path="/men/trousers/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/men/tshirts" exact>
+                    <Category gender={"men"} category={"tshirts"}></Category>
+                </Route>
+
+                <Route path="/men/tshirts/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
                 <Route path="/women" exact>
                     <Categories gender={"women"}></Categories>
                 </Route>
@@ -84,6 +116,38 @@ function App() {
                 </Route>
 
                 <Route path="/women/jackets/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/women/caps" exact>
+                    <Category gender={"women"} category={"caps"}></Category>
+                </Route>
+
+                <Route path="/women/caps/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/women/sweatshirts" exact>
+                    <Category gender={"women"} category={"sweatshirts"}></Category>
+                </Route>
+
+                <Route path="/women/sweatshirts/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/women/trousers" exact>
+                    <Category gender={"women"} category={"trousers"}></Category>
+                </Route>
+
+                <Route path="/women/trousers/:id">
+                    <ProductDetails></ProductDetails>
+                </Route>
+
+                <Route path="/women/tshirts" exact>
+                    <Category gender={"women"} category={"tshirts"}></Category>
+                </Route>
+
+                <Route path="/women/tshirts/:id">
                     <ProductDetails></ProductDetails>
                 </Route>
 
