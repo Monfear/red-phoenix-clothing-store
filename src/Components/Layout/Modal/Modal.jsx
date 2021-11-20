@@ -1,7 +1,7 @@
 import styles from "./Modal.module.css";
 
 import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { CLEAR_CART } from "../../../Redux/actions/cart-actions";
@@ -19,6 +19,7 @@ const Backdrop = () => {
 
 const Content = () => {
     const dispatchCart = useDispatch();
+    const history = useHistory();
 
     const uniqid = require("uniqid");
 
@@ -29,17 +30,16 @@ const Content = () => {
 
     const confirmOrder = () => {
         dispatchCart({ type: CLEAR_CART });
+        history.replace("/");
     };
 
     return (
         <section className={styles.content}>
             <h1 className={styles.heading}>Your order has been submitted.</h1>
             <p className={styles.caption}>Order ID: {createID()}</p>
-            <Link to="/">
-                <button className={styles.modalBtn} onClick={confirmOrder}>
-                    confirm
-                </button>
-            </Link>
+            <button className={styles.modalBtn} onClick={confirmOrder}>
+                confirm
+            </button>
         </section>
     );
 };

@@ -13,8 +13,10 @@ export const Cart = () => {
 
     const dispatchCart = useDispatch();
     const cartSelector = useSelector((store) => store.cart);
+    const authSelector = useSelector((store) => store.auth);
 
     const { items, totalAmount } = cartSelector;
+    const { email } = authSelector;
 
     const uniqid = require("uniqid");
 
@@ -27,6 +29,17 @@ export const Cart = () => {
 
         if (items.length) {
             setIsCartEmpty(false);
+
+            const url = "https://red-phoenix-66bc1-default-rtdb.firebaseio.com/orders.json";
+
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify({
+                    user: email || "unregistered",
+                    items,
+                    totalAmount,
+                }),
+            });
         }
     };
 
