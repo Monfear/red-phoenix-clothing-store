@@ -56,6 +56,12 @@
     transform: scale(1.05);
 }
 
+.warning {
+    font-size: 1.7rem;
+    color: red;
+    text-align: center;
+}
+
 @media (max-width: 480px) {
     .cart {
         margin-top: 10rem;
