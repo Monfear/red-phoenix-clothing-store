@@ -1,0 +1,39 @@
+.error {
+    height: 100vh;
+    background-image: url("./../../../img/bg-error.jpg");
+    background-position: center -100px;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backBtn {
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 15rem;
+    padding: 2.5rem 3.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: var(--color-secondary-light);
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.backBtn:hover {
+    background-color: var(--color-secondary-dark);
+}
+
+@media (max-width: 480px) {
+    .error {
+        background-position: -200px center;
+        background-size: cover;
+    }
+
+    .backBtn {
+        padding: 1.5rem 3.5rem;
+        margin-top: 10rem;
+    }
+}
