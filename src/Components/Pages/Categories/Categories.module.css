@@ -31,6 +31,7 @@
 .picture {
     width: 300px;
     height: 200px;
+    object-fit: cover;
     opacity: 0.5;
     transition: all 0.7s;
 }
@@ -49,11 +50,11 @@
     }
 
     .picture {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
     .name {
-        font-size: 3rem;
+        font-size: 2.8rem;
     }
 }

@@ -1,9 +1,10 @@
 .cart {
+    margin-top: 12rem;
 }
 
 .title {
     font-size: 3.4rem;
-    margin: 12rem 0 4rem 0;
+    margin-bottom: 4rem;
     text-align: center;
 }
 
@@ -39,7 +40,7 @@
     align-self: flex-end;
 }
 
-.cartBtn {
+.clearBtn {
     padding: 1rem 2rem;
     margin: 0 auto 0 2rem;
     font-size: 2rem;
@@ -48,8 +49,39 @@
     background-color: var(--color-primary);
     cursor: pointer;
     align-self: flex-end;
+    transition: all 0.2s;
 }
 
-.cartBtn:active {
-    transform: translateY(2px);
+.clearBtn:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .cart {
+        margin-top: 10rem;
+    }
+
+    .title {
+        margin-bottom: 1rem;
+    }
+
+    .orderContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        margin: 4rem auto;
+    }
+
+    .clearBtn {
+        margin: 2rem auto;
+    }
+
+    .totalAmount {
+        align-self: center;
+    }
+
+    .orderBtn {
+        margin-top: 4rem;
+    }
 }

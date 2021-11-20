@@ -34,13 +34,10 @@ export const Navbar = () => {
                 </NavLink>
             </nav>
 
-            <Link to="/cart">
-                <button className={styles.btnCart}>
-                    <span className={styles.btnCartText}>Your cart</span>
-                    <i className={`${"fas fa-shopping-cart"} ${styles.cartIcon}`}></i>
-                    {/* <span className={styles.cartQuantity}>{cartSelector.totalQuantity ? cartSelector.totalQuantity : "0"}</span> */}
-                    <span className={styles.cartQuantity}>{cartSelector.totalQuantity}</span>
-                </button>
+            <Link to="/cart" className={styles.btnCart}>
+                <span className={styles.btnCartText}>Your cart</span>
+                <i className={`${"fas fa-shopping-cart"} ${styles.cartIcon}`}></i>
+                <span className={styles.cartQuantity}>{cartSelector.totalQuantity}</span>
             </Link>
 
             {authSelector.isLoggedIn && (

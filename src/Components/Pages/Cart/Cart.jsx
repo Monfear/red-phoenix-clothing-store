@@ -28,7 +28,7 @@ export const Cart = () => {
             </div>
 
             <div className={styles.orderContainer}>
-                <button className={styles.cartBtn} onClick={clearCart}>
+                <button className={styles.clearBtn} onClick={clearCart}>
                     Clear cart
                 </button>
                 <span className={styles.totalAmount}>Total: ${totalAmount.toFixed(2)}</span>

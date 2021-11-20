@@ -43,16 +43,16 @@
 }
 
 .btnCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 200px;
     height: 60px;
     background-color: #fff;
     color: initial;
     font-size: 2.2rem;
-
-    width: 200px;
-    height: 60px;
-    background-color: #fff;
-    font-size: 2.2rem;
+    text-decoration: none;
 
     border: 2px solid #af0808;
     border-radius: 10rem;
@@ -127,9 +127,9 @@
     }
 
     .logoSmall {
-        margin-left: -2.5rem;
+        margin-left: -2rem;
         display: inline;
-        width: 60px;
+        width: 50px;
     }
 
     .navLink {

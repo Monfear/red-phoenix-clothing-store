@@ -1,6 +1,4 @@
 .cartItem {
-    /* border: 2px solid red; */
-
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -49,4 +47,16 @@
 
 .cartBtn:active {
     transform: translateY(2px);
+}
+
+@media (max-width: 480px) {
+    .cartItem {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .info {
+        flex-basis: auto;
+        text-align: center;
+    }
 }

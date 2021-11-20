@@ -120,3 +120,35 @@
 .addToCartBtn:hover {
     background-color: var(--color-secondary-dark);
 }
+
+@media (max-width: 480px) {
+    .detailsContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .detailsPhotos {
+        margin-left: 0;
+    }
+
+    .bigPhoto {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+
+    .smallPhoto {
+        width: 170px;
+        height: 170px;
+    }
+
+    .detailsInfo {
+        margin: 4rem 2rem 0;
+        padding-bottom: 5rem;
+    }
+
+    .addToCartBtn {
+        display: block;
+        margin: 4rem auto 0;
+    }
+}

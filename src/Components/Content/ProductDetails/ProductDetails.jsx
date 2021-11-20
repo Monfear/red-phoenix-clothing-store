@@ -4,15 +4,12 @@ import { productsData } from "./../../../data/products";
 
 import { useEffect, useState, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ADD_ITEM } from "../../../Redux/actions/cart-actions";
 
 export const ProductDetails = () => {
     const [activeImg, setActiveImage] = useState(null);
     const [sliderPosition, setSliderPosition] = useState(0);
-
-    const cartSelector = useSelector((store) => store.cart);
-    // console.log(cartSelector);
 
     const dispatchCart = useDispatch();
 
@@ -21,11 +18,11 @@ export const ProductDetails = () => {
     const params = useParams();
     const location = useLocation();
 
-    const locationSplitted = location.pathname.split("/");
+    const pathSplitted = location.pathname.split("/");
 
     const id = parseInt(params.id);
-    const gender = locationSplitted[1];
-    const category = locationSplitted[2];
+    const gender = pathSplitted[1];
+    const category = pathSplitted[2];
 
     const productsList = productsData[`${gender}`][`${category}`];
     const product = productsList.find((product) => product.id === id);
