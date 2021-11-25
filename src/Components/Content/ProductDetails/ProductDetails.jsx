@@ -7,6 +7,8 @@ import { useParams, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ADD_ITEM } from "../../../Redux/actions/cart-actions";
 
+import { Stars } from "./../../Interface/Stars/Stars";
+
 export const ProductDetails = () => {
     const [activeImg, setActiveImage] = useState(null);
     const [sliderPosition, setSliderPosition] = useState(0);
@@ -21,8 +23,7 @@ export const ProductDetails = () => {
     const pathSplitted = location.pathname.split("/");
 
     const id = parseInt(params.id);
-    const gender = pathSplitted[1];
-    const category = pathSplitted[2];
+    const [_, gender, category] = pathSplitted;
 
     const productsList = productsData[`${gender}`][`${category}`];
     const product = productsList.find((product) => product.id === id);
@@ -94,13 +95,7 @@ export const ProductDetails = () => {
                 <h2 className={styles.productPrice}>${product.price}</h2>
                 <p className={styles.productDescription}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae magni esse nesciunt reprehenderit magnam facilis accusantium architecto, quas laborum quidem expedita facere ipsam corporis reiciendis. Exercitationem aut voluptatibus doloremque. Hic.</p>
 
-                <div className={styles.productRating}>
-                    <i className={`${product.rating > 0 ? "fas fa-star" : "far fa-star"} ${styles.star}`}></i>
-                    <i className={`${product.rating > 1 ? "fas fa-star" : "far fa-star"} ${styles.star}`}></i>
-                    <i className={`${product.rating > 2 ? "fas fa-star" : "far fa-star"} ${styles.star}`}></i>
-                    <i className={`${product.rating > 3 ? "fas fa-star" : "far fa-star"} ${styles.star}`}></i>
-                    <i className={`${product.rating > 4 ? "fas fa-star" : "far fa-star"} ${styles.star}`}></i>
-                </div>
+                <Stars rating={product.rating}></Stars>
 
                 <button className={styles.addToCartBtn} onClick={addItemToCart}>
                     add to cart
